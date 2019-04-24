@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtIdPasien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID0101"
+            android:textSize="15sp"
+            android:padding="15dp"
+            android:background="@color/colorKuning"
+            />
+
+        <TextView
+            android:id="@+id/txtNamaPasien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID0101"
+            android:textSize="20sp"
+            android:padding="15dp"
+            />
+
+        <TextView
+            android:id="@+id/txtTanggal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="27 April 2019"
+            android:textSize="15dp"
+            android:padding="15dp"
+            />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
