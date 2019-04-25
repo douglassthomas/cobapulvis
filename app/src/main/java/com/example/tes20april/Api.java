@@ -21,11 +21,13 @@ class DokterReqRes{
 }
 
 
+
 public interface Api {
 
     String BASE_URL = "http://kentang.binusian.id:3000/";
+//    String BASE_URL = "https://storiette-api.azurewebsites.net/";
 
-    @POST("doctorLogin")
+    @POST("doctorLogin") //doctorLogin
     Call<DokterReqRes> goLogin(@Body DokterReqRes login);
 
 

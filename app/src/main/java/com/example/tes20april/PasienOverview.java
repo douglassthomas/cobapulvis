@@ -2,23 +2,28 @@ package com.example.tes20april;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-public class PasienOverview extends AppCompatActivity {
+import java.util.Calendar;
+
+public class PasienOverview extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     GraphView suhu;
     GraphView tekananDarah;
     GraphView detakJantung;
     GraphView lajuPernapasan;
     ImageButton btnGoBack;
-
+    Button btnStartDate;
+    Button btnEndDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +77,9 @@ public class PasienOverview extends AppCompatActivity {
         detakJantung.setTitle("Detak Jantung");
         lajuPernapasan.setTitle("Laju Pernapasan");
 
+
+
+
         btnGoBack = findViewById(R.id.goBack);
         btnGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,5 +87,40 @@ public class PasienOverview extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnStartDate = findViewById(R.id.btnStartDate);
+        btnEndDate = findViewById(R.id.btnEndDate);
+
+        Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+        final DatePickerDialog start = new DatePickerDialog(getApplicationContext(), PasienOverview.this, mYear, mMonth, mDay);
+        DatePickerDialog end = new DatePickerDialog(getApplicationContext(), PasienOverview.this, mYear, mMonth, mDay);
+
+        btnStartDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start.show();
+                String startDate = start.getDatePicker().getYear()+"-"+start.getDatePicker().getMonth()+"-"+start.getDatePicker().getDayOfMonth();
+                btnStartDate.setText(startDate);
+            }
+        });
+
+        btnEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    public void goDetail(View view) {
+
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
     }
 }

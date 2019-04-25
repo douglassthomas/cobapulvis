@@ -1,6 +1,8 @@
 package com.example.tes20april;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,12 +19,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     TextView dokterLogin;
+    SharedPreferences mSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dokterLogin = findViewById(R.id.dokterLogin);
+        mSetting = this.getSharedPreferences("dokterid", Context.MODE_PRIVATE);
+
+
+        if(!mSetting.getString("dokterid", "invalid").equals("invalid")){
+            Intent i = new Intent(getApplicationContext(), HomeContainer.class);
+            startActivity(i);
+            finish();
+        }
+
     }
 
     public void goLogin(View view) {
@@ -42,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "ahoy", Toast.LENGTH_SHORT);
 
                 if(res.loginstatus.equals("success")){
-                    LocalStorage.setId(res.id);
+                    mSetting.edit().putString("dokterid", res.id).apply();
 
 
                     Intent i = new Intent(getApplicationContext(), HomeContainer.class);

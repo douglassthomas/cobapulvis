@@ -30,10 +30,11 @@ public class PulvisService extends FirebaseMessagingService {
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel channel = new NotificationChannel("myNotif", "Background Service", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("pulvis", "Background Service", NotificationManager.IMPORTANCE_DEFAULT);
 
             manager.createNotificationChannel(channel);
         }
+
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "myNotif")
                 .setContentTitle(title)
